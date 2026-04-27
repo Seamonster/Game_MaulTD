@@ -1,0 +1,32 @@
+# Build output
+build/
+out/
+
+# CMake generated files
+CMakeUserPresets.json
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/
+
+# IDEs and editors
+.vs/
+.vscode/
+.idea/
+
+# Compiler output
+*.obj
+*.o
+*.lib
+*.a
+*.dll
+*.so
+*.dylib
+*.exe
+*.pdb
+*.ilk
+
+# Logs
+*.log
