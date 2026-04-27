@@ -28,6 +28,28 @@ The project should keep game logic separate from rendering and input so the impo
 
 ## Quick Start
 
+### VS Code on Windows
+
+This repo includes a VS Code workflow based on the Raylib starter template. It expects the standard Raylib Windows installer layout:
+
+- `C:/raylib/raylib`
+- `C:/raylib/w64devkit`
+- VS Code C++ extension
+
+Open the repo folder in VS Code and use `Run and Debug` with `Debug MaulTD`. The launch configuration runs the `build debug` task automatically and outputs the executable to:
+
+```text
+build/vscode/debug/maultd.exe
+```
+
+You can also run the same build manually:
+
+```powershell
+C:\raylib\w64devkit\bin\mingw32-make.exe BUILD_MODE=DEBUG
+```
+
+### Portable CMake Path
+
 Requirements:
 
 - CMake 3.24 or newer

@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build debug",
+            "type": "process",
+            "command": "C:/raylib/w64devkit/bin/mingw32-make.exe",
+            "args": [
+                "BUILD_MODE=DEBUG"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build release",
+            "type": "process",
+            "command": "C:/raylib/w64devkit/bin/mingw32-make.exe",
+            "args": [
+                "BUILD_MODE=RELEASE"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean vscode build",
+            "type": "process",
+            "command": "C:/raylib/w64devkit/bin/mingw32-make.exe",
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

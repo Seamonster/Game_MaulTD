@@ -9,7 +9,8 @@ Create a 2D offline tower defense game inspired by Wintermaul TD, designed as bo
 - Language: C++
 - Standard: C++20
 - Framework: Raylib
-- Build system: CMake
+- Local Windows workflow: VS Code C++ extension with the Raylib `w64devkit` Makefile path
+- Portable build system: CMake
 - Testing: GoogleTest for core logic
 - Initial target: Desktop
 - Future consideration: Mobile app portability
@@ -49,6 +50,13 @@ Create a 2D offline tower defense game inspired by Wintermaul TD, designed as bo
 - Use fixed timestep updates for game logic.
 - Keep core systems testable without graphics.
 - Prefer small systems with clear responsibilities while learning.
+
+## Development Workflow
+
+- Prefer VS Code for day-to-day editing, running, and debugging on Windows.
+- Use `.vscode/tasks.json` and `.vscode/launch.json` for the local Run and Debug flow.
+- Keep CMake available as the portable build and GoogleTest test path.
+- Do not let VS Code-specific setup leak into graphics-free core logic.
 
 ## Initial Systems
 

@@ -13,7 +13,7 @@ Testing/
 
 # IDEs and editors
 .vs/
-.vscode/
+.vscode/ipch/
 .idea/
 
 # Compiler output
@@ -27,6 +27,7 @@ Testing/
 *.exe
 *.pdb
 *.ilk
+*.d
 
 # Logs
 *.log

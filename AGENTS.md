@@ -22,7 +22,8 @@ Game Maul TD is a 2D offline tower defense game inspired by Wintermaul TD from W
 
 - Language: C++20
 - Framework: Raylib
-- Build system: CMake
+- Local Windows workflow: VS Code C++ extension using the Raylib `w64devkit` Makefile path
+- Portable build system: CMake
 - Tests: GoogleTest
 - Initial target: Desktop
 - Future target consideration: Mobile portability
@@ -34,6 +35,7 @@ Game Maul TD is a 2D offline tower defense game inspired by Wintermaul TD from W
 - Core types should avoid graphics framework types.
 - Prefer simple value types and explicit ownership while the project is young.
 - Add unit tests for grid, pathfinding, movement, tower placement, economy, and combat rules as those systems appear.
+- Keep the VS Code Makefile workflow focused on quick local app builds; keep portable tests under CMake unless a separate GoogleTest Makefile path is intentionally added.
 
 ## Game Design Anchors
 
