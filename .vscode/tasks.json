@@ -36,6 +36,72 @@
                 "clean"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "configure tests",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build/tests",
+                "-G",
+                "MinGW Makefiles",
+                "-DCMAKE_C_COMPILER=C:/raylib/w64devkit/bin/gcc.exe",
+                "-DCMAKE_CXX_COMPILER=C:/raylib/w64devkit/bin/g++.exe"
+            ],
+            "options": {
+                "env": {
+                    "PATH": "C:/raylib/w64devkit/bin;${env:PATH}"
+                }
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build tests",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build/tests",
+                "--target",
+                "maultd_core_tests"
+            ],
+            "options": {
+                "env": {
+                    "PATH": "C:/raylib/w64devkit/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": [
+                "configure tests"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "run tests",
+            "type": "shell",
+            "command": "ctest",
+            "args": [
+                "--test-dir",
+                "build/tests",
+                "--output-on-failure"
+            ],
+            "options": {
+                "env": {
+                    "PATH": "C:/raylib/w64devkit/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": [
+                "build tests"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
         }
     ]
 }

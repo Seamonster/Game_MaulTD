@@ -48,6 +48,16 @@ You can also run the same build manually:
 C:\raylib\w64devkit\bin\mingw32-make.exe BUILD_MODE=DEBUG
 ```
 
+### Running Tests From VS Code
+
+Tests use GoogleTest through CMake. In VS Code, open the command palette and run:
+
+```text
+Tasks: Run Test Task
+```
+
+Choose `run tests` if prompted. The task configures `build/tests`, builds `maultd_core_tests`, and runs `ctest --output-on-failure`.
+
 ### Portable CMake Path
 
 Requirements:
