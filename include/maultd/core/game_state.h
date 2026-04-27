@@ -2,21 +2,23 @@
 
 #include "maultd/core/hex_grid.h"
 
-namespace maultd::core {
+namespace maultd::core
+{
 
-class GameState {
+class tGameState
+{
 public:
-    explicit GameState(HexGrid grid);
+    explicit tGameState(tHexGrid grid);
 
-    void Update(double fixed_delta_seconds);
+    void update(double fixedDeltaSeconds);
 
-    [[nodiscard]] HexGrid& grid() noexcept;
-    [[nodiscard]] const HexGrid& grid() const noexcept;
-    [[nodiscard]] double elapsed_seconds() const noexcept;
+    [[nodiscard]] tHexGrid& grid() noexcept;
+    [[nodiscard]] const tHexGrid& grid() const noexcept;
+    [[nodiscard]] double elapsedSeconds() const noexcept;
 
 private:
-    HexGrid grid_;
-    double elapsed_seconds_{0.0};
+    tHexGrid Grid;
+    double ElapsedSeconds{0.0};
 };
 
 } // namespace maultd::core

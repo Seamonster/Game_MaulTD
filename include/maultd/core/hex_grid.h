@@ -2,51 +2,56 @@
 
 #include <vector>
 
-namespace maultd::core {
+namespace maultd::core
+{
 
-struct OffsetCoord {
-    int row{0};
-    int col{0};
+struct tOffsetCoord
+{
+    int Row{0};
+    int Col{0};
 
-    [[nodiscard]] constexpr bool operator==(const OffsetCoord&) const = default;
+    [[nodiscard]] constexpr bool operator==(const tOffsetCoord&) const = default;
 };
 
-struct WorldPosition {
-    float x{0.0F};
-    float y{0.0F};
+struct tWorldPosition
+{
+    float X{0.0F};
+    float Y{0.0F};
 };
 
-class HexGrid {
+class tHexGrid
+{
 public:
-    HexGrid(int rows, int cols, float hex_radius);
+    tHexGrid(int rows, int cols, float hexRadius);
 
     [[nodiscard]] int rows() const noexcept;
     [[nodiscard]] int cols() const noexcept;
-    [[nodiscard]] float hex_radius() const noexcept;
+    [[nodiscard]] float hexRadius() const noexcept;
 
-    [[nodiscard]] bool IsInBounds(OffsetCoord coord) const noexcept;
-    [[nodiscard]] bool IsBuildable(OffsetCoord coord) const;
-    [[nodiscard]] bool IsOccupied(OffsetCoord coord) const;
-    [[nodiscard]] bool IsPassable(OffsetCoord coord) const;
+    [[nodiscard]] bool isInBounds(tOffsetCoord coord) const noexcept;
+    [[nodiscard]] bool isBuildable(tOffsetCoord coord) const;
+    [[nodiscard]] bool isOccupied(tOffsetCoord coord) const;
+    [[nodiscard]] bool isPassable(tOffsetCoord coord) const;
 
-    bool SetBuildable(OffsetCoord coord, bool buildable);
-    bool PlaceTower(OffsetCoord coord);
-    bool RemoveTower(OffsetCoord coord);
+    bool setBuildable(tOffsetCoord coord, bool buildable);
+    bool placeTower(tOffsetCoord coord);
+    bool removeTower(tOffsetCoord coord);
 
-    [[nodiscard]] WorldPosition HexCenter(OffsetCoord coord) const;
+    [[nodiscard]] tWorldPosition hexCenter(tOffsetCoord coord) const;
 
 private:
-    struct Tile {
-        bool buildable{true};
-        bool occupied{false};
+    struct tTile
+    {
+        bool Buildable{true};
+        bool Occupied{false};
     };
 
-    [[nodiscard]] int Index(OffsetCoord coord) const;
+    [[nodiscard]] int index(tOffsetCoord coord) const;
 
-    int rows_{0};
-    int cols_{0};
-    float hex_radius_{0.0F};
-    std::vector<Tile> tiles_;
+    int Rows{0};
+    int Cols{0};
+    float HexRadius{0.0F};
+    std::vector<tTile> Tiles;
 };
 
 } // namespace maultd::core

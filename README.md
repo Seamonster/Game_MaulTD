@@ -26,6 +26,14 @@ The early focus is on simple, testable systems:
 
 The project should keep game logic separate from rendering and input so the important rules can be tested without opening a window.
 
+## Coding Style
+
+- Use lower camel naming for local variables and free functions, for example `fixedDeltaSeconds`.
+- Methods start with a lower-case letter, for example `isBuildable()`.
+- Data members start with an upper-case letter, for example `Rows`.
+- Type definitions such as structs and classes start with a lower-case `t`, for example `tHexGrid`.
+- Put opening curly braces for new code sections on their own line.
+
 ## Quick Start
 
 ### VS Code on Windows

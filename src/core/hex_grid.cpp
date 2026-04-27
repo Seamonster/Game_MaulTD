@@ -4,114 +4,123 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace maultd::core {
-namespace {
+namespace maultd::core
+{
+namespace
+{
 
 constexpr float kSqrtThree = 1.7320508075688772F;
 
 } // namespace
 
-HexGrid::HexGrid(int rows, int cols, float hex_radius)
-    : rows_(rows),
-      cols_(cols),
-      hex_radius_(hex_radius)
+tHexGrid::tHexGrid(int rows, int cols, float hexRadius)
+    : Rows(rows),
+      Cols(cols),
+      HexRadius(hexRadius)
 {
-    if (rows <= 0) {
+    if (rows <= 0)
+    {
         throw std::invalid_argument("HexGrid rows must be positive");
     }
 
-    if (cols <= 0) {
+    if (cols <= 0)
+    {
         throw std::invalid_argument("HexGrid columns must be positive");
     }
 
-    if (hex_radius <= 0.0F) {
+    if (hexRadius <= 0.0F)
+    {
         throw std::invalid_argument("HexGrid hex radius must be positive");
     }
 
-    tiles_.resize(static_cast<std::size_t>(rows_ * cols_));
+    Tiles.resize(static_cast<std::size_t>(Rows * Cols));
 }
 
-int HexGrid::rows() const noexcept
+int tHexGrid::rows() const noexcept
 {
-    return rows_;
+    return Rows;
 }
 
-int HexGrid::cols() const noexcept
+int tHexGrid::cols() const noexcept
 {
-    return cols_;
+    return Cols;
 }
 
-float HexGrid::hex_radius() const noexcept
+float tHexGrid::hexRadius() const noexcept
 {
-    return hex_radius_;
+    return HexRadius;
 }
 
-bool HexGrid::IsInBounds(OffsetCoord coord) const noexcept
+bool tHexGrid::isInBounds(tOffsetCoord coord) const noexcept
 {
-    return coord.row >= 0 && coord.row < rows_ && coord.col >= 0 && coord.col < cols_;
+    return coord.Row >= 0 && coord.Row < Rows && coord.Col >= 0 && coord.Col < Cols;
 }
 
-bool HexGrid::IsBuildable(OffsetCoord coord) const
+bool tHexGrid::isBuildable(tOffsetCoord coord) const
 {
-    return IsInBounds(coord) && tiles_[Index(coord)].buildable && !tiles_[Index(coord)].occupied;
+    return isInBounds(coord) && Tiles[index(coord)].Buildable && !Tiles[index(coord)].Occupied;
 }
 
-bool HexGrid::IsOccupied(OffsetCoord coord) const
+bool tHexGrid::isOccupied(tOffsetCoord coord) const
 {
-    return IsInBounds(coord) && tiles_[Index(coord)].occupied;
+    return isInBounds(coord) && Tiles[index(coord)].Occupied;
 }
 
-bool HexGrid::IsPassable(OffsetCoord coord) const
+bool tHexGrid::isPassable(tOffsetCoord coord) const
 {
-    return IsInBounds(coord) && !tiles_[Index(coord)].occupied;
+    return isInBounds(coord) && !Tiles[index(coord)].Occupied;
 }
 
-bool HexGrid::SetBuildable(OffsetCoord coord, bool buildable)
+bool tHexGrid::setBuildable(tOffsetCoord coord, bool buildable)
 {
-    if (!IsInBounds(coord)) {
+    if (!isInBounds(coord))
+    {
         return false;
     }
 
-    tiles_[Index(coord)].buildable = buildable;
+    Tiles[index(coord)].Buildable = buildable;
     return true;
 }
 
-bool HexGrid::PlaceTower(OffsetCoord coord)
+bool tHexGrid::placeTower(tOffsetCoord coord)
 {
-    if (!IsBuildable(coord)) {
+    if (!isBuildable(coord))
+    {
         return false;
     }
 
-    tiles_[Index(coord)].occupied = true;
+    Tiles[index(coord)].Occupied = true;
     return true;
 }
 
-bool HexGrid::RemoveTower(OffsetCoord coord)
+bool tHexGrid::removeTower(tOffsetCoord coord)
 {
-    if (!IsOccupied(coord)) {
+    if (!isOccupied(coord))
+    {
         return false;
     }
 
-    tiles_[Index(coord)].occupied = false;
+    Tiles[index(coord)].Occupied = false;
     return true;
 }
 
-WorldPosition HexGrid::HexCenter(OffsetCoord coord) const
+tWorldPosition tHexGrid::hexCenter(tOffsetCoord coord) const
 {
-    if (!IsInBounds(coord)) {
+    if (!isInBounds(coord))
+    {
         throw std::out_of_range("Hex coordinate is outside the grid");
     }
 
-    const auto row_offset = static_cast<float>(coord.row % 2) * 0.5F;
-    const auto x = hex_radius_ * kSqrtThree * (static_cast<float>(coord.col) + row_offset);
-    const auto y = hex_radius_ * 1.5F * static_cast<float>(coord.row);
+    const auto rowOffset = static_cast<float>(coord.Row % 2) * 0.5F;
+    const auto x = HexRadius * kSqrtThree * (static_cast<float>(coord.Col) + rowOffset);
+    const auto y = HexRadius * 1.5F * static_cast<float>(coord.Row);
 
-    return WorldPosition{x, y};
+    return tWorldPosition{x, y};
 }
 
-int HexGrid::Index(OffsetCoord coord) const
+int tHexGrid::index(tOffsetCoord coord) const
 {
-    return coord.row * cols_ + coord.col;
+    return coord.Row * Cols + coord.Col;
 }
 
 } // namespace maultd::core

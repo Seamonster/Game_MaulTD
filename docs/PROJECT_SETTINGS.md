@@ -58,6 +58,14 @@ Create a 2D offline tower defense game inspired by Wintermaul TD, designed as bo
 - Keep CMake available as the portable build and GoogleTest test path.
 - Do not let VS Code-specific setup leak into graphics-free core logic.
 
+## C++ Coding Style
+
+- Use lower camel naming for local variables and free functions, for example `fixedDeltaSeconds`.
+- Methods start with a lower-case letter, for example `isBuildable()` and `placeTower()`.
+- Data members start with an upper-case letter, for example `Rows`, `Cols`, and `Tiles`.
+- Type definitions such as structs and classes start with a lower-case `t`, for example `tHexGrid`.
+- Put the opening curly brace for a new code section on its own line.
+
 ## Initial Systems
 
 - Grid system

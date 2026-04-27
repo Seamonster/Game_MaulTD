@@ -28,6 +28,14 @@ Game Maul TD is a 2D offline tower defense game inspired by Wintermaul TD from W
 - Initial target: Desktop
 - Future target consideration: Mobile portability
 
+## C++ Coding Style
+
+- Use lower camel naming for local variables and free functions, for example `fixedDeltaSeconds`.
+- Methods start with a lower-case letter, for example `isBuildable()` and `placeTower()`.
+- Data members start with an upper-case letter, for example `Rows`, `Cols`, and `Tiles`.
+- Type definitions such as structs and classes start with a lower-case `t`, for example `tHexGrid`.
+- Put the opening curly brace for a new code section on its own line.
+
 ## Architecture Rules
 
 - Core logic belongs under `include/maultd/core` and `src/core`.

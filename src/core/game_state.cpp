@@ -2,31 +2,32 @@
 
 #include <utility>
 
-namespace maultd::core {
+namespace maultd::core
+{
 
-GameState::GameState(HexGrid grid)
-    : grid_(std::move(grid))
+tGameState::tGameState(tHexGrid grid)
+    : Grid(std::move(grid))
 {
 }
 
-void GameState::Update(double fixed_delta_seconds)
+void tGameState::update(double fixedDeltaSeconds)
 {
-    elapsed_seconds_ += fixed_delta_seconds;
+    ElapsedSeconds += fixedDeltaSeconds;
 }
 
-HexGrid& GameState::grid() noexcept
+tHexGrid& tGameState::grid() noexcept
 {
-    return grid_;
+    return Grid;
 }
 
-const HexGrid& GameState::grid() const noexcept
+const tHexGrid& tGameState::grid() const noexcept
 {
-    return grid_;
+    return Grid;
 }
 
-double GameState::elapsed_seconds() const noexcept
+double tGameState::elapsedSeconds() const noexcept
 {
-    return elapsed_seconds_;
+    return ElapsedSeconds;
 }
 
 } // namespace maultd::core
