@@ -66,6 +66,14 @@ Tasks: Run Test Task
 
 Choose `run tests` if prompted. The task configures `build/tests`, builds `maultd_core_tests`, and runs `ctest --output-on-failure`.
 
+The VS Code test tasks use the installed CMake path directly:
+
+```text
+C:/Program Files/CMake/bin
+```
+
+If the integrated terminal cannot find `cmake` after a PATH update, close every VS Code window and make sure no `Code.exe` process is still running before reopening the project.
+
 ### Portable CMake Path
 
 Requirements:

@@ -40,7 +40,7 @@
         {
             "label": "configure tests",
             "type": "shell",
-            "command": "cmake",
+            "command": "C:/Program Files/CMake/bin/cmake.exe",
             "args": [
                 "-S",
                 ".",
@@ -61,7 +61,7 @@
         {
             "label": "build tests",
             "type": "shell",
-            "command": "cmake",
+            "command": "C:/Program Files/CMake/bin/cmake.exe",
             "args": [
                 "--build",
                 "build/tests",
@@ -83,7 +83,7 @@
         {
             "label": "run tests",
             "type": "shell",
-            "command": "ctest",
+            "command": "C:/Program Files/CMake/bin/ctest.exe",
             "args": [
                 "--test-dir",
                 "build/tests",
